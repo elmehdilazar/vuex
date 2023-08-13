@@ -2,7 +2,7 @@
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-{{  count }}
+{{  count }} <button type="button" @click="increment">increment</button>
   </div>
 </template>
 
@@ -19,6 +19,11 @@ export default {
   },
   components: {
     HelloWorld
-  }
+  },
+  methods: {
+    increment() {
+      this.$store.commit("increment", 2);
+    }
+  },
 }
 </script>
