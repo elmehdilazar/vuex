@@ -22,11 +22,14 @@ export default {
     HelloWorld,
   },
   setup() {
+    //use tore
     const store = useStore();
-    const count = computed(() => store.state.count);
-    const books = computed(() => store.state.books);
+    //store.state.books(namespace).books
+    const count = computed(() => store.state.books.count);
+    const books = computed(() => store.state.books.books);
     function increment() {
-      store.commit("increment", 2);
+      //books/increment namespace
+      store.commit("books/increment", 2);
     }
     function addBook() {
       const book = {
@@ -34,10 +37,10 @@ export default {
         title: "vue js",
         descripiotn: "ddddd kkkkkk ddddddddjjjjjjjj",
       };
-      store.dispatch("addbook", book);
+      store.dispatch("books/addbook", book);
     }
     onMounted(() => {
-      store.dispatch("getBooks");
+      store.dispatch("books/getBooks");
     });
     return {
       count,
